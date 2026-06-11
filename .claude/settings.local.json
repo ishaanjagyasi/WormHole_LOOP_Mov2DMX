@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(py *)",
+      "PowerShell(& .\\\\.venv\\\\Scripts\\\\python.exe -m pip install --upgrade pip; & .\\\\.venv\\\\Scripts\\\\python.exe -m pip install stupidArtnet opencv-python numpy sounddevice soundfile)",
+      "PowerShell(& .\\\\.venv\\\\Scripts\\\\python.exe -m pip install --index-url https://pypi.org/simple --trusted-host pypi.org --trusted-host files.pythonhosted.org stupidArtnet opencv-python numpy sounddevice soundfile)",
+      "PowerShell(& .\\\\.venv\\\\Scripts\\\\python.exe -c \"import cv2, numpy, sounddevice, soundfile; from stupidArtnet import StupidArtnet; print\\('all imports OK'\\); print\\('numpy', numpy.__version__, '| opencv', cv2.__version__\\)\")",
+      "PowerShell(Get-ChildItem -File | Where-Object { $_.Extension -in '.mov','.mp4','.wav' } | Select-Object Name, @{N='MB';E={[math]::Round\\($_.Length/1MB,2\\)}})",
+      "PowerShell(Get-ChildItem | Select-Object Name, @{N='MB';E={[math]::Round\\($_.Length/1MB,2\\)}})",
+      "PowerShell($p = Start-Process -FilePath \".\\\\.venv\\\\Scripts\\\\python.exe\" -ArgumentList \"cylinder_player.py\" -PassThru -RedirectStandardOutput out.txt -RedirectStandardError err.txt; Start-Sleep -Seconds 4; if \\(-not $p.HasExited\\) { Stop-Process -Id $p.Id -Force }; Write-Output \"--- STDOUT ---\"; Get-Content out.txt; Write-Output \"--- STDERR ---\"; Get-Content err.txt)",
+      "PowerShell($p = Start-Process -FilePath \".\\\\.venv\\\\Scripts\\\\python.exe\" -ArgumentList \"-u\",\"cylinder_player.py\" -PassThru -RedirectStandardOutput out.txt -RedirectStandardError err.txt; Start-Sleep -Seconds 6; if \\(-not $p.HasExited\\) { Stop-Process -Id $p.Id -Force; $killed=$true }; Write-Output \"--- STDOUT ---\"; Get-Content out.txt; Write-Output \"--- STDERR ---\"; Get-Content err.txt; if \\($killed\\) { Write-Output \"--- \\(still running, killed = good\\) ---\" })",
+      "PowerShell(& .\\\\.venv\\\\Scripts\\\\python.exe -c \"import inspect, stupidArtnet; from stupidArtnet import StupidArtnet; print\\(inspect.signature\\(StupidArtnet.__init__\\)\\)\")",
+      "PowerShell(Remove-Item *)",
+      "PowerShell(& .\\\\.venv\\\\Scripts\\\\python.exe -m pip install --index-url https://pypi.org/simple --trusted-host pypi.org --trusted-host files.pythonhosted.org pyqtgraph PyQt5 PyOpenGL)",
+      "Bash(./.venv/Scripts/python.exe -c \"import py_compile; py_compile.compile\\('cylinder_sim.py', doraise=True\\); print\\('compile OK'\\)\")",
+      "Bash(./.venv/Scripts/python.exe -c \"import py_compile; py_compile.compile\\('cylinder_player.py', doraise=True\\); print\\('compile OK'\\)\")",
+      "Bash(.venv/bin/python --version)",
+      "Bash(.venv/bin/pip freeze *)",
+      "Bash(.venv/bin/python3 --version)",
+      "Bash(.venv/bin/python3 -m pip freeze)",
+      "Bash(python3 -m py_compile movie_to_dmx.py)",
+      "Bash(python3 -c \"import ast,sys; ast.parse\\(open\\('movie_to_dmx.py'\\).read\\(\\)\\); print\\('OK: parses'\\)\")",
+      "Bash(python3 -c \"import numpy\")",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(gh auth *)",
+      "Bash(git checkout *)",
+      "Bash(git -c 'user.name=Ishaan Jagyasi' -c user.email=ijagyasi3@gatech.edu commit -q -m ' *)",
+      "Bash(rm -rf .git)",
+      "Bash(mkdir -p video-to-artnet-dmx)",
+      "Bash(cp movie_to_dmx.py cylinder_player.py cylinder_sim.py DMX_to_RGB_tox.tox README.md requirements.txt .gitignore LICENSE video-to-artnet-dmx/)",
+      "Bash(mkdir -p example)",
+      "Bash(git mv *)",
+      "Bash(gh repo *)",
+      "Bash(du -sh .venv __pycache__ .claude video-to-artnet-dmx show.mov track.wav DMX_to_RGB_tox.tox)",
+      "Bash(find .claude -type f -maxdepth 3)",
+      "Bash(chmod +x claude-session/restore.sh claude-session/backup.sh)",
+      "Bash(git check-ignore *)",
+      "Bash(git push *)"
+    ]
+  }
+}

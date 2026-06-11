@@ -11,6 +11,7 @@ __pycache__/
 *.py[cod]
 
 # Local tooling / OS
-.claude/
+#   .claude/settings.local.json IS tracked (permissions); chat transcripts live
+#   in claude-session/ so the session can be resumed on another machine.
 .DS_Store
 Thumbs.db
