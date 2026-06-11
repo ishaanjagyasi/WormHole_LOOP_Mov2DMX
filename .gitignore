@@ -1,0 +1,16 @@
+# Public template repo (lives in its own git repo / GitHub project)
+video-to-artnet-dmx/
+
+# Virtual environments (regenerate from requirements; this one is Windows-only)
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Local tooling / OS
+.claude/
+.DS_Store
+Thumbs.db
